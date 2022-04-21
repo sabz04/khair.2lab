@@ -1,0 +1,20 @@
+
+    @{
+            int Min = -20;
+            int Max = 20;
+            Random randNum = new Random();
+            var nums = Enumerable
+                .Repeat(1, 20)
+                .Select(i => randNum.Next(Min, Max))
+                .ToArray();
+            nums
+                 .ToList().ForEach(p=>@ViewBag.result += p.ToString()+" ");
+            ViewBag.response = "Сумма неотрицательных четных элементов: "+nums
+            .ToList()
+            .Where(num => num > 0 && num % 2 == 0)
+            .Sum()
+            .ToString();
+    }
+    <p>Массив:</p>
+    <p>@ViewBag.result</p>
+    <p>@ViewBag.response</p>
